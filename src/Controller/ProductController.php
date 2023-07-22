@@ -70,8 +70,7 @@ class ProductController extends AbstractController
     {
         return $this->render('product/show.html.twig', [
             'product' => $product,
-        ]);
-    }
+        ])
 
     #[Route('/{id}/edit', name: 'app_product_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Product $product, ProductRepository $productRepository): Response
