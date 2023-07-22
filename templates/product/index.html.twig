@@ -1,0 +1,60 @@
+{% extends 'base.html1.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+<style>
+    .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+
+    }
+    .button2 {background-color: #e7e7e7; color: black;font-size: 14px;} /* Gray */
+
+</style>
+    <h1>Product index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.image }}</td>
+                <td>{{ product.description }}</td>
+                <td>
+                    <button class="button">
+                    <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a></button>
+                    <button class="button2">
+                    <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a></button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_product_new') }}">Create new</a>
+{% endblock %}

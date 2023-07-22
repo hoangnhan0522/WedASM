@@ -1,0 +1,55 @@
+{% extends 'base.html1.twig' %}
+
+{% block title %}Category index{% endblock %}
+
+{% block body %}
+    <style>
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: black;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+
+        }
+        .button2 {background-color: #e7e7e7; color: black;font-size: 14px;} /* Gray */
+
+    </style>
+    <h1>Category index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td>
+                    <button class="button">
+                    <a href="{{ path('app_category_show', {'id': category.id}) }}">show</a>
+                    </button>
+                    <button class="button2">
+                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a></button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_category_new') }}">Create new</a>
+{% endblock %}

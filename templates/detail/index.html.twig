@@ -1,0 +1,155 @@
+
+{% block header %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    </head>
+    <!-- Basic -->
+
+    <link rel="stylesheet" href="https://bootswatch.com/5/cerulean/bootstrap.min.css">
+    <title>
+        NHAN SOP
+    </title>
+
+    <link href="../css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+
+</head>
+<header class="header_section">
+    <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="http://127.0.0.1:8000/home">
+          <span>
+            NHAN SOP
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://127.0.0.1:8000/home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/productuser">
+                        Shop
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/contact">Contact Us</a>
+                </li>
+            </ul>
+            <div class="user_option">
+
+                <form>
+
+                    <a class="btn btn-secondary" href="/{{ app.user ? 'logout' : 'login' }}" @click="isOpen = false">
+                        {{ app.user ? 'logout' : 'login'}}
+                    </a>
+
+                </form>
+                <a href="">
+                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                </a>
+                <form class="form-inline ">
+                    <button class="btn nav_search-btn" type="submit">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+{% endblock %}
+
+
+
+{% block body2 %}
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--==Title============================-->
+        <title>Product Page HTML</title>
+        <!--==CSS==============================-->
+        <link rel="stylesheet" href="../css/123.css"/>
+        <!--==Poppins-font=====================-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <!--==Using-Font-Awesome-for-Icons=====-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+        <!-- Link Swiper's CSS -->
+        <link
+                rel="stylesheet"
+                href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+        />
+
+
+    </head>
+    <body>
+
+    <!--==Product-Page=================================-->
+    <section id="product-page">
+        <div class="product-details">
+            <!--**Img*************************-->
+            <div class="product-img">
+
+                <!-- Swiper Slider -->
+                <div class="swiper mySwiper">
+                        <!--**1******-->
+                        <div class="swiper-slide">
+                            <img width="350px" src="{{ asset('image/' ~ product.getImage()) }}" class="cart-item-image" alt="{{ product.getName() }}">
+                        </div>
+                    <!--btns-->
+                    <div class="slider-btns">
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+            <!--**Text************************-->
+            <div class="product-text">
+                <!--category-->
+                <h3>{{ product.name }}</h3>
+                <span class="product-price">{{ product.price }}$</span>
+                <p>{{ product.description }}
+                    <br/>
+                </p>
+
+
+                <!--btn-->
+                <div class="product-button">
+                    <a href="#" class="add-bag-btn">Add To Bag</a>
+                    <a href="#" class="add-wishlist-btn">Add To Wishlist</a>
+                </div>
+                <!--help-btn-->
+                <a href="http://127.0.0.1:8000/contact" class="help-btn">Need Any Help?</a>
+            </div>
+        </div>
+    </section>
+
+    <!--==Jquery===========================-->
+
+
+    <!-- Swiper JS -->
+
+
+
+    </body>
+
+{% endblock %}
+
+

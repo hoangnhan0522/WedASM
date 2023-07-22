@@ -1,0 +1,56 @@
+{% extends 'base.html1.twig' %}
+
+{% block title %}Contact index{% endblock %}
+
+{% block body %}
+<style>
+    .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+</style>
+    <h1>Contact index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Massage</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.id }}</td>
+                <td>{{ contact.Email }}</td>
+                <td>{{ contact.Phone }}</td>
+                <td>{{ contact.Massage }}</td>
+                <td>{{ contact.Name }}</td>
+                <td>
+                    <button class="button">
+                    <a href="{{ path('app_contact_show', {'id': contact.id}) }}">show</a>
+                    </button>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
