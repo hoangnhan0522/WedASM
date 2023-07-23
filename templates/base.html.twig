@@ -60,13 +60,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav  ">
                         <li class="nav-item active">
-                            <a class="nav-link" href="http://127.0.0.1:8000/">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link active" href="http://127.0.0.1:8000/">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="http://127.0.0.1:8000/productuser">
                                 Shop
                             </a>
                         </li>
+                        <li class="btn-outline-secondary"> <a class="nav-link" href="http://127.0.0.1:8000/laptop">Laptop</a></li>
+                        <li class="btn-outline-secondary"> <a class="nav-link" href="http://127.0.0.1:8000/laptop">Keyboard</a></li>
+                        <li class="btn-outline-secondary"> <a class="nav-link" href="http://127.0.0.1:8000/laptop">Mouse</a></li>
+
+
 
                         <li class="nav-item">
                             <a class="nav-link" href="http://127.0.0.1:8000/contact/new">Contact Us</a>
@@ -76,7 +81,7 @@
 
                         <form>
 
-                            <a class="btn btn-secondary" href="/{{ app.user ? 'logout' : 'login' }}" @click="isOpen = false">
+                            <a class="btn" href="/{{ app.user ? 'logout' : 'login' }}" @click="isOpen = false">
                                 {{ app.user ? 'logout' : 'login'}}
                             </a>
 
@@ -84,11 +89,12 @@
                         <a href="">
                             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                         </a>
-                        <form class="form-inline ">
-                            <button class="btn nav_search-btn" type="submit">
-                                <i class="fa fa-search" aria-hidden="true"></i>
-                            </button>
-                        </form>
+                        <ul class="navbar-nav">
+                            <form class="d-flex" action="{{ path('search') }}" method="GET" style="margin-right: 40px;">
+                                <input class="form-control me-sm-0" type="search" name="keyword" placeholder="Search" required>
+                                <button class="btn btn-secondary my-2 my-sm-0 mx-2" type="submit">Search</button>
+                            </form>
+                        </ul>
                     </div>
                 </div>
             </nav>

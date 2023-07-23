@@ -4,27 +4,35 @@
 <html>
 
 <head>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    </head>
     <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 
-    <link rel="stylesheet" href="https://bootswatch.com/5/cerulean/bootstrap.min.css">
     <title>
         NHAN SOP
     </title>
 
+    <!-- slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+
+    <!-- Custom styles for this template -->
     <link href="../css/style.css" rel="stylesheet" />
     <!-- responsive style -->
-
+    <link href="../css/responsive.css" rel="stylesheet" />
 </head>
 <header class="header_section">
     <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="http://127.0.0.1:8000/home">
+        <a class="navbar-brand" href="http://127.0.0.1:8000/">
           <span>
             NHAN SOP
           </span>
@@ -33,27 +41,31 @@
             <span class=""></span>
         </button>
 
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                    <a class="nav-link" href="http://127.0.0.1:8000/home">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link active" href="http://127.0.0.1:8000/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="http://127.0.0.1:8000/productuser">
                         Shop
                     </a>
                 </li>
+                <li class="btn-outline-secondary"> <a class="nav-link" href="http://127.0.0.1:8000/laptop">Laptop</a></li>
+                <li class="btn-outline-secondary"> <a class="nav-link" href="http://127.0.0.1:8000/laptop">Keyboard</a></li>
+                <li class="btn-outline-secondary"> <a class="nav-link" href="http://127.0.0.1:8000/laptop">Mouse</a></li>
+
+
 
                 <li class="nav-item">
-                    <a class="nav-link" href="http://127.0.0.1:8000/contact">Contact Us</a>
+                    <a class="nav-link" href="http://127.0.0.1:8000/contact/new">Contact Us</a>
                 </li>
             </ul>
             <div class="user_option">
 
                 <form>
 
-                    <a class="btn btn-secondary" href="/{{ app.user ? 'logout' : 'login' }}" @click="isOpen = false">
+                    <a class="btn" href="/{{ app.user ? 'logout' : 'login' }}" @click="isOpen = false">
                         {{ app.user ? 'logout' : 'login'}}
                     </a>
 
@@ -61,15 +73,17 @@
                 <a href="">
                     <i class="fa fa-shopping-bag" aria-hidden="true"></i>
                 </a>
-                <form class="form-inline ">
-                    <button class="btn nav_search-btn" type="submit">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                </form>
+                <ul class="navbar-nav">
+                    <form class="d-flex" action="{{ path('search') }}" method="GET" style="margin-right: 40px;">
+                        <input class="form-control me-sm-0" type="search" name="keyword" placeholder="Search" required>
+                        <button class="btn btn-secondary my-2 my-sm-0 mx-2" type="submit">Search</button>
+                    </form>
+                </ul>
             </div>
         </div>
     </nav>
 </header>
+
 
 {% endblock %}
 
@@ -115,8 +129,7 @@
                         </div>
                     <!--btns-->
                     <div class="slider-btns">
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
+                        
                     </div>
                 </div>
             </div>
