@@ -20,9 +20,20 @@ class ProductController extends AbstractController
     #[Route('/', name: 'app_product_index', methods: ['GET'])]
     public function index(ProductRepository $productRepository): Response
     {
-        return $this->render('product/index.html.twig', [
-            'products' => $productRepository->findAll(),
-        ]);
+
+        if ($this->isGranted('ROLE_ADMIN')) {
+            // If the user has the 'ROLE_ADMIN' role, render the error page
+            return $this->render('product/index.html.twig', [
+                'products' => $productRepository->findAll(),
+            ]);
+        } else {
+            // If not, redirect to the home page
+            return $this->redirectToRoute('app_error');
+        }
+
+
+
+
     }
 
     #[Route('/new', name: 'app_product_new', methods: ['GET', 'POST'])]

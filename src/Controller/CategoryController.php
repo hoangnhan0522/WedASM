@@ -17,9 +17,17 @@ class CategoryController extends AbstractController
     #[Route('/', name: 'app_category_index', methods: ['GET'])]
     public function index(CategoryRepository $categoryRepository): Response
     {
-        return $this->render('category/index.html.twig', [
-            'categories' => $categoryRepository->findAll(),
-        ]);
+        if ($this->isGranted('ROLE_ADMIN')) {
+            // If the user has the 'ROLE_ADMIN' role, render the error page
+
+            return $this->render('category/index.html.twig', [
+                'categories' => $categoryRepository->findAll(),
+            ]);
+        } else {
+            // If not, redirect to the home page
+            return $this->redirectToRoute('app_error');
+        }
+
     }
 
     #[Route('/new', name: 'app_category_new', methods: ['GET', 'POST'])]

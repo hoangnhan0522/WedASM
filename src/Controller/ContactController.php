@@ -17,9 +17,17 @@ class ContactController extends AbstractController
     #[Route('/contact', name: 'app_contact_index', methods: ['GET'])]
     public function index(ContactRepository $contactRepository): Response
     {
-        return $this->render('contact/index.html.twig', [
-            'contacts' => $contactRepository->findAll(),
-        ]);
+
+        if ($this->isGranted('ROLE_ADMIN')) {
+            // If the user has the 'ROLE_ADMIN' role, render the error page
+            return $this->render('contact/index.html.twig', [
+                'contacts' => $contactRepository->findAll(),
+            ]);
+        } else {
+            // If not, redirect to the home page
+            return $this->redirectToRoute('app_error');
+        }
+
     }
 
     #[Route('newlienhe', name: 'app_contact_new', methods: ['GET', 'POST'])]

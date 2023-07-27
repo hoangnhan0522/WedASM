@@ -17,9 +17,17 @@ class UserController extends AbstractController
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
-        return $this->render('user/index.html.twig', [
-            'users' => $userRepository->findAll(),
-        ]);
+        if ($this->isGranted('ROLE_ADMIN')) {
+            // If the user has the 'ROLE_ADMIN' role, render the error page
+            return $this->render('user/index.html.twig', [
+                'users' => $userRepository->findAll(),
+
+            ]);
+        } else {
+            // If not, redirect to the home page
+            return $this->redirectToRoute('app_error');
+        }
+
     }
 
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <style>
+
+
+        main {
+            padding: 20px;
+        }
+
+
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .content {
+            text-align: center;
+            background-color: #fef9ff;
+            border-radius: 100px;
+            padding: 100px; /* Increased padding for better spacing */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increased shadow for better depth */
+            max-width: 500px; /* Set a maximum width to avoid excessive width on larger screens */
+            margin: 0 auto; /* Center the content within the container */
+        }
+
+        h1 {
+            color: #04c2c3;
+            margin-bottom: 20px; /* Increased margin for better spacing */
+        }
+
+        p {
+            color: #c3311e;
+            margin-bottom: 30px; /* Increased margin for better spacing */
+        }
+
+        /* Add more styles as needed to make the page look better */
+
+    </style>
+    <div class="container">
+        <div class="content">
+            {% if is_granted('ROLE_ADMIN') %}
+                <h1>Welcome, Admin!</h1>
+                <p>You have access to view this page.</p>
+                <!-- Add specific content for admin here if needed -->
+            {% else %}
+
+                <p>You do not have permission to access this website!</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
