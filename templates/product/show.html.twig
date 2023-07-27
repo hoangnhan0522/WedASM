@@ -130,6 +130,11 @@
     </nav>
 </div>
 {% block body %}
+    <style>
+        .img{
+            weight:200px;
+            height: 200px;}
+    </style>
     <h1>Product</h1>
 
     <table class="table">
@@ -148,7 +153,7 @@
             </tr>
             <tr>
                 <th>Image</th>
-                <td>{{ product.image }}</td>
+                <td><img class="img" src="{{ asset('image/' ~ product.getImage()) }}" class="cart-item-image" alt="{{ product.getName() }}"></td></td>
             </tr>
             <tr>
                 <th>Description</th>

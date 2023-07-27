@@ -78,38 +78,25 @@ class ProductController extends AbstractController
     {
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $imageFile = $form->get('image')->getData();
-
             if ($imageFile) {
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $newFilename = $originalFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
-
                 try {
                     $imageFile->move(
                         $this->getParameter('product_image_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    // Xử lý ngoại lệ khi không thể di chuyển tệp
-                }
-
+                        $newFilename);
+                } catch (FileException $e) {}// Xử lý ngoại lệ khi không thể di chuyển tệ
                 $product->setImage($newFilename);
             } else {
                 // Gán giá trị null cho thuộc tính image
-                $product->setImage(null);
-            }
-
+                $product->setImage(null); }
             $productRepository->save($product, true);
-
-            return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
-        }
-
+            return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);   }
         return $this->render('product/edit.html.twig', [
             'product' => $product,
-            'form' => $form->createView(),
-        ]);
+            'form' => $form->createView(),]);
     }
 
     #[Route('/{id}', name: 'app_product_delete', methods: ['POST'])]

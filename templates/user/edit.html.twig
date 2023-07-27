@@ -1,13 +1,206 @@
-{% extends 'base.html1.twig' %}
 
-{% block title %}Edit Product{% endblock %}
 
+
+
+
+<!DOCTYPE html>
+<html>
+
+
+
+{% block header %}
+{#    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">#}
+{#        <div class="container-fluid">#}
+{#            <a class="navbar-brand" href="http://127.0.0.1:8000/admin">ADMIN</a>#}
+{#            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">#}
+{#                <span class="navbar-toggler-icon"></span>#}
+{#            </button>#}
+{#            <div class="collapse navbar-collapse" id="navbarColor02">#}
+{#                <ul class="navbar-nav me-auto">#}
+
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="http://127.0.0.1:8000/product">Product manager</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="http://127.0.0.1:8000/category">Category manager</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="http://127.0.0.1:8000/contact">Contact manager</a>#}
+{#                    </li>#}
+{#                    <li class="nav-item">#}
+{#                        <a class="nav-link" href="http://127.0.0.1:8000/user">User manager</a>#}
+{#                    </li>#}
+
+{#                </ul>#}
+
+{#                <form>#}
+
+{#                    <a class="btn btn-info disabled" href="/{{ app.user ? 'logout' : 'login' }}" @click="isOpen = false">#}
+{#                        {{ app.user ? 'logout' : 'login'}}#}
+{#                    </a>#}
+
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </nav>#}
+
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+
+    <link rel="stylesheet" href="https://bootswatch.com/5/zephyr/bootstrap.min.css">
+
+
+</head>
+<style>
+    .slide img{
+        width: 100%;
+    }
+    h1
+    {
+        margin: 0;
+        padding: 0;
+        font-family: 'Lato';
+    }
+
+    h1 {
+        font-size: 2.8em;
+        padding: 10px 0;
+        text-align: center;
+        font-weight: 800;
+    }
+
+    p {
+        font-size: 1.1em;
+        font-weight: 100;
+        letter-spacing: 5px;
+    }
+
+    .header {
+        width: 100%;
+        padding:60px 0;
+        text-align: center;
+        background: #33cccc;
+        color: white;
+    }
+
+
+    .btn-bgstroke {
+        font-size: 20px;
+        display: inline-block;
+        border: 1px solid white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 300;
+        margin-top: 30px;
+    }
+
+    .btn-bgstroke:hover {
+        background-color: white;
+        color: #33cccc;
+    }
+</style>
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Admin</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="../images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="../../css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- owl stylesheets -->
+    <link rel="stylesheet" href="../../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+</head>
+<body>
+
+<!-- header section start -->
+<div class="header_section">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="navbar-brand" href="http://127.0.0.1:8000/admin">ADMIN</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/product">Product Management</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/category">Category Management</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/contact">Contact Management</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/user">User Management</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/{{ app.user ? 'logout' : 'login' }}" @click="isOpen = false">
+                        {{ app.user ? 'logout' : 'login'}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+{% endblock %}
+
+
+</body>
+</html>
+<style>{
+        box-sizing: border-box;}input[type=text], select,
+    textarea {  width: 100%;  padding: 12px;  border: 1px solid #ccc;  border-radius: 4px;  resize: vertical;}
+    label {  padding: 12px 12px 12px 0;  display: inline-block;}
+    input[type=submit] {  background-color: #58257b;  color: white;  padding: 12px 20px;  border: none;  border-radius: 4px;  cursor: pointer;  float: right;}
+    input[type=submit]:hover {  background-color: #45a049;}
+    container {  border-radius: 5px;  background-color: #f2f2f2;  padding: 20px;}
+    col-25 {  float: left;  width: 25%;  margin-top: 6px;}
+    col-75 {  float: left;  width: 75%;  margin-top: 6px;}.row:after {  content: "";  display: table;  clear: both;}
+    /* Bố cục linh hoạt: khi màn hình có chiều rộng dưới 600px thì hai cột chồng lên nhau thay vì nằm cạnh nhau */
+    @media screen and (max-width: 600px) {  .col-25, .col-75, input[type=submit] {    width: 100%;    margin-top: 0;}}</style>
 {% block body %}
-    <h1>Edit User</h1>
 
-    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+        <h1>Edit User</h1>
 
-    <a href="{{ path('app_product_index') }}">back to list</a>
+        {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('product/_delete_form.html.twig') }}
+
+
+        {{ include('user/_delete_form.html.twig') }}
+
+    <a href="{{ path('app_user_index') }}">back to list</a>
 {% endblock %}

@@ -148,7 +148,11 @@
 
     }
     .button2 {background-color: #e7e7e7; color: black;font-size: 14px;} /* Gray */
+.img{
+    weight:70px;
+    height: 70px;
 
+}
 </style>
     <h1>Product index</h1>
 
@@ -169,7 +173,7 @@
                 <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }}</td>
-                <td>{{ product.image }}</td>
+                <td ><img class="img" src="{{ asset('image/' ~ product.getImage()) }}" class="cart-item-image" alt="{{ product.getName() }}"></td>
                 <td>{{ product.description }}</td>
                 <td>
                     <button class="btn btn-outline-success">

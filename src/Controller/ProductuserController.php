@@ -10,7 +10,7 @@ use App\Entity\Product;
 
 class ProductuserController extends AbstractController
 {
-    #[Route('/productuser', name: 'app_productuser')]
+    #[Route('/user1', name: 'app_productuser')]
     public function index(ProductRepository $productRepository): Response
     {
         $products = $productRepository->findAll(); // Lấy tất cả sản phẩm từ repository
