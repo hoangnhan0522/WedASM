@@ -53,14 +53,22 @@ class ContactController extends AbstractController
     #[Route('/contact/{id}', name: 'app_contact_show', methods: ['GET'])]
     public function show(Contact $contact): Response
     {
+        if ($this->isGranted('ROLE_ADMIN')) {
+            // If the user has the 'ROLE_ADMIN' role, render the error page
         return $this->render('contact/show.html.twig', [
             'contact' => $contact,
         ]);
+        } else {
+            // If not, redirect to the home page
+            return $this->redirectToRoute('app_error');
+        }
     }
 
     #[Route('/contact/{id}/edit', name: 'app_contact_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Contact $contact, EntityManagerInterface $entityManager): Response
     {
+        if ($this->isGranted('ROLE_ADMIN')) {
+            // If the user has the 'ROLE_ADMIN' role, render the error page
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
@@ -74,6 +82,10 @@ class ContactController extends AbstractController
             'contact' => $contact,
             'form' => $form,
         ]);
+        } else {
+            // If not, redirect to the home page
+            return $this->redirectToRoute('app_error');
+        }
     }
 
     #[Route('/contact/{id}', name: 'app_contact_delete', methods: ['POST'])]
@@ -86,4 +98,5 @@ class ContactController extends AbstractController
 
         return $this->redirectToRoute('app_contact_index', [], Response::HTTP_SEE_OTHER);
     }
+
 }

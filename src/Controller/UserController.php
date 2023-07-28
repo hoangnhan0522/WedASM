@@ -61,6 +61,8 @@ class UserController extends AbstractController
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
+        if ($this->isGranted('ROLE_ADMIN')) {
+            // If the user has the 'ROLE_ADMIN' role, render the error page
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -74,6 +76,10 @@ class UserController extends AbstractController
             'user' => $user,
             'form' => $form,
         ]);
+        } else {
+            // If not, redirect to the home page
+            return $this->redirectToRoute('app_error');
+        }
     }
 
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]

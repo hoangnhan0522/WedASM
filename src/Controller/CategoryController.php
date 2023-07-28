@@ -33,6 +33,8 @@ class CategoryController extends AbstractController
     #[Route('/new', name: 'app_category_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        if ($this->isGranted('ROLE_ADMIN')) {
+            // If the user has the 'ROLE_ADMIN' role, render the error page
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
@@ -48,6 +50,10 @@ class CategoryController extends AbstractController
             'category' => $category,
             'form' => $form,
         ]);
+        } else {
+            // If not, redirect to the home page
+            return $this->redirectToRoute('app_error');
+        }
     }
 
     #[Route('/{id}', name: 'app_category_show', methods: ['GET'])]
@@ -61,6 +67,8 @@ class CategoryController extends AbstractController
     #[Route('/{id}/edit', name: 'app_category_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Category $category, EntityManagerInterface $entityManager): Response
     {
+        if ($this->isGranted('ROLE_ADMIN')) {
+            // If the user has the 'ROLE_ADMIN' role, render the error page
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
@@ -74,6 +82,10 @@ class CategoryController extends AbstractController
             'category' => $category,
             'form' => $form,
         ]);
+    } else {
+    // If not, redirect to the home page
+return $this->redirectToRoute('app_error');
+}
     }
 
     #[Route('/{id}', name: 'app_category_delete', methods: ['POST'])]
