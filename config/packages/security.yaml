@@ -36,6 +36,7 @@ security:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
+    # NOte: Phan quyen ADmin va User
     access_control:
          - { path: ^/Admin, roles: ROLE_ADMIN }
          - { path: ^/Product, roles: ROLE_ADMIN }
